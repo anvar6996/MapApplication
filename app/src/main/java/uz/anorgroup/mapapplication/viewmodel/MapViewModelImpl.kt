@@ -35,8 +35,11 @@ class MapViewModelImpl @Inject constructor(private val repository: MapRepository
         repository.getDirection(origin, destination, key).onEach {
             it.onSuccess { value ->
                 progressFlow.emit(false)
-                val points = value.routes?.get(0)?.overviewPolyline!!.points!!
-                successFlow.emit(decodePoly(points))
+
+
+                value.routes.getOrNull(0)?.overviewPolyline?.points?.let { points ->
+                    successFlow.emit(decodePoly(points))
+                }
             }
             it.onFailure { throwable ->
                 progressFlow.emit(false)
