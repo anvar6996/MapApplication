@@ -1,4 +1,4 @@
-package uz.anorgroup.mapapplication;
+package uz.anorgroup.mapapplication.data.others;
 
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -60,10 +60,7 @@ public class DirectionsJSONParser {
 
         } catch (JSONException e) {
             e.printStackTrace();
-        } catch (Exception e) {
         }
-
-
         return routes;
     }
 
@@ -137,8 +134,7 @@ class TaskParser extends AsyncTask<String, Void, List<List<HashMap<String, Strin
             polylineOptions.color(Color.BLUE);
             polylineOptions.geodesic(true);
         }
-        if (polylineOptions != null)
-        {
+        if (polylineOptions != null) {
 
         }
     }
